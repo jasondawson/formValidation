@@ -110,11 +110,11 @@ body {
 
 .login-signup-wrapper {
 	width: 400px;
-	margin: 100px auto 0 auto;
+	margin: 70px auto 0 auto;
 }
 
 	.login-signup-menu {
-
+		margin: 10px auto;
 	}
 
 		.login-signup-menu li {
@@ -122,6 +122,39 @@ body {
 			margin-left: 5px;
 			margin-right: 5px;
 			cursor: pointer;
+			border: 1px solid #e1e1e1;
+			border-radius: 5px;
+			padding: 8px;
 		}
 
+	.login-signup-menu li:hover {
+		background: #e1e1e1;
+	}
+
 	
+.pull-left {
+	float: left !important;
+	padding-left: 0;
+}
+
+input.ng-invalid.ng-dirty {
+	border: 1px solid red;
+}
+
+input.pw-invalid {
+	border: 1px solid red !important;
+}
+
+.login-success {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px;
+	position: fixed;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border: 5px solid black;
+	border-radius: 5px;
+	background: #fff;
+
+}

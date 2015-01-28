@@ -2,21 +2,91 @@
 	<div class='login-signup-menu'>
 		<ul>
 			<!-- Links for toggeling login and signup forms -->
-			<li>Login</li>
-			<li>Signup</li>
+			<li ng-click="loginShow = true; signupShow = false">Login</li>
+			<li ng-click="loginShow = false; signupShow = true">Signup</li>
 		</ul>
 	</div>
 	<div class='forms-container'>
 		
 		<!-- Login Form -->
-		<div class='login-signup-form' ng-controller='loginCtrl'>
+		<div class='login-signup-form' ng-show="loginShow" ng-controller='loginCtrl'>
 			<!-- LOGIN FORM CODE GOES HERE -->
+			<form role="form" name="loginForm">
+			<div class="form-group" show-errors>
+    			<label for="username">Username</label>
+    			<input type="text" class="form-control" id="loginUsername" name="username" placeholder="Enter username" ng-model="user.username" required>
+    			<p class="help-block" ng-if="loginForm.username.$error.required && loginForm.username.$dirty">The username is required.</p>
+  			</div>
+  			<div class="form-group" show-errors>
+    			<label for="password">Password</label>
+    			<input type="password" class="form-control" id="loginPassword" name="password" placeholder="Password" ng-model="user.password" required>
+    			<p class="help-block" ng-if="loginForm.password.$error.required && loginForm.password.$dirty">The password is required.</p>
+  			</div>
+			<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid" ng-click=
+		"login()">Submit</button>
+			</form>
+
+			<div class="login-success" ng-show="showSuccess" ng-click="showSuccess = false">
+				<h1> {{loginMessage}}</h1>
+				<p style="font-size: 15px"> Click to close </p>
+			</div>
+		
 		</div>
 
+	
+
 		<!-- Signup Form -->
-		<div class='login-signup-form' ng-controller='signupCtrl'>
+		<div class='login-signup-form' ng-show="signupShow" ng-controller='signupCtrl'>
 		<!-- SIGNUP FORM CODE GOES HERE -->
-		</div>
+		<form role="form" name="signupForm">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name" id="signupName" placeholder="name" ng-model="user.name" required>
+				<p class="help-block" ng-if="signupForm.name.$error.required && signupForm.name.$dirty">Name is required.</p>
+			</div>
+			 <div class="form-group">
+    			<label for="email">Email address</label>
+    			<input type="email" class="form-control" id="signupEmail" name="email" ng-model="user.email" placeholder="Enter email" required>
+    			<p class="help-block" ng-if="signupForm.email.$error.required && signupForm.email.$dirty">Valid email is required.</p>
+  			</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="signupUsername" name="username" ng-model="user.username" placeholder="username" required>
+				<p class="help-block" ng-if="signupForm.username.$error.required && signupForm.username.$dirty">Name is required.</p>
+			</div>
+			 <div class="form-group">
+    			<label for="password">Password</label>
+    			<input type="password" class="form-control" id="signupPassword" name="password" ng-model="user.password" placeholder="Password" required>
+    			<p class="help-block" ng-if="signupForm.password.$error.required && signupForm.password.$dirty">Password is required.</p>
+  			</div>
+   			<div class="form-group">
+    			<label for="signupReenterPassword">Re-enter Password</label>
+    			<input type="password" class="form-control" id="signupReenterPassword" name="password2" placeholder="Re-enter Password" ng-model="user.password2" ng-class="{'pw-invalid': user.password !== user.password2}" required>
+    			<p class="help-block" ng-if="user.password2 !== user.password && signupForm.password2.$dirty ">Passwords do not match.</p>
+
+  			</div>
+  			<div class="form-group col-xs-3 pull-left">
+   				<label for="signupAge">Age</label>
+    			<input type="number" class="form-control col-xs-4" id="signupAge" placeholder="Age">
+  			</div>
+  			<div class="radio clear">
+  				<label for="signupMale">
+    			<input type="radio" name="optionsRadios" id="signupMale" value="male">
+   				 Male
+  				</label>
+  			</div>
+  			<div class="radio clear">
+  				<label for="signupFemale">
+    			<input type="radio" name="optionsRadios" id="signupFemale" value="female">
+   				 Female
+  				</label>
+			</div>
+			<label for="signupState">State
+			<select class="form-control" ng-model="signupState" ng-options="state.abbreviation as state.name for state in states" ></select>
+			</label>
+			<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Submit</button>
+			</div>
+		</form>
 
 		
 	</div>

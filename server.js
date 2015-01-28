@@ -53,10 +53,10 @@ app.post('/loginUser', function(req, res) {
 		issue: '',
 		message: ''
 	}
-
 	// Loop through users array to see if username/password match
 	for(var i=0; i<users.length; i++) {
 		var loginUser = req.body.user
+		console.log(loginUser);
 		if(users[i].username === loginUser.username) {
 			if(users[i].password === loginUser.password) {
 				// Username and Password match
@@ -69,12 +69,16 @@ app.post('/loginUser', function(req, res) {
 				response.message = 'Password is incorrect';
 				break;
 			}
-		} else {
+		} /*else {
 			// Username doesn't exist...didn't check password
 			response.issue = 'username';
 			response.message = 'Username does not exist.';
 			break;
-		}
+		}*/
+	}
+	if (!(response.success) && !(response.issue)) {
+		response.issue = 'username';
+		response.message = 'Username does not exist'
 	}
 
 	// Return the response back to 'Angular land'
