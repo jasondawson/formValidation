@@ -84,7 +84,7 @@
 			<label for="signupState">State
 			<select class="form-control" ng-model="signupState" ng-options="state.abbreviation as state.name for state in states" ></select>
 			</label>
-			<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">Submit</button>
+			<button type="submit" class="btn btn-default" ng-disabled="signupForm.$invalid || (user.password !== user.password2)">Submit</button>
 			</div>
 		</form>
 
