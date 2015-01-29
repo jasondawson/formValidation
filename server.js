@@ -56,7 +56,6 @@ app.post('/loginUser', function(req, res) {
 	// Loop through users array to see if username/password match
 	for(var i=0; i<users.length; i++) {
 		var loginUser = req.body.user
-		console.log(loginUser);
 		if(users[i].username === loginUser.username) {
 			if(users[i].password === loginUser.password) {
 				// Username and Password match
