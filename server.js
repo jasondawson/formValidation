@@ -46,7 +46,6 @@ var users = [
 
 // Login a user
 app.post('/loginUser', function(req, res) {
-	
 	// Response template
 	var response = {
 		success: false,
